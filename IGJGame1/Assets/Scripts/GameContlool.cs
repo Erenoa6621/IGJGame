@@ -6,7 +6,7 @@ public class GameContlool : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject MusicItem;
-    public bool GameFlag = true;
+    public bool GameFlag = false;
     private AudioSource Audio;
     private float saveTime;
     // Start is called before the first frame update

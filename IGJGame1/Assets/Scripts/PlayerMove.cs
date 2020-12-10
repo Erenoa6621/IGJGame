@@ -14,9 +14,12 @@ public class PlayerMove : MonoBehaviour
     private float trackPosition;
     public GameObject GameManager;
     private bool Check;
+    public Animator PlayerAni; 　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　
     [SerializeField] int activeRailNum = 1;
     private float time;
     public float delayTime;
+    private int score;
+    public GameObject socoreOb;
     void Start ()
     {
         if (Rails != null)
@@ -37,6 +40,7 @@ public class PlayerMove : MonoBehaviour
     void Update ()
     {
         Check = GameManager.GetComponent<GameContlool>().GameFlag;
+        score = socoreOb.GetComponent<ScoreManager>().Score;
         if (Check == true)
         {
             RailChange(activeRailNum);
@@ -45,36 +49,47 @@ public class PlayerMove : MonoBehaviour
             for (int i = 0; i < paths.Count; i++)
             {
                 GoForward(i); //前に進むやつ
-            }
-            trackPosition += Time.deltaTime * speed;
+            }            
             //ループ
             if (trackPosition > 1)
             {
-                trackPosition = 0;
-            }
+                trackPosition = trackPosition;
+                PlayerPrefs.SetInt("SCORE", score);
+                PlayerPrefs.Save();
 
+            }
+            else 
+            {
+                trackPosition += Time.deltaTime * speed;
+
+            }
+            
             //レーン切り替え
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 activeRailNum = 2;
                 RailChange(activeRailNum);
+                PlayerAni.SetTrigger("Atack");
                 time = 0.0f;
             }
             else if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 activeRailNum = 0;
                 RailChange(activeRailNum);
+                PlayerAni.SetTrigger("Atack");
                 time = 0.0f;
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
                 activeRailNum = 1;
                 RailChange(activeRailNum);
+                PlayerAni.SetTrigger("Atack");
             }
             else if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 activeRailNum = 3;
                 RailChange(activeRailNum);
+                PlayerAni.SetTrigger("Atack");
                 time = 0.0f;
             }
 

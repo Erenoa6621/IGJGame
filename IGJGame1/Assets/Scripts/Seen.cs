@@ -6,6 +6,7 @@ public class Seen : MonoBehaviour
 {
     // Start is called before the first frame update
     // Use this for initialization
+    
     void Start()
     {
         Invoke("ChangeScene", 1.5f);

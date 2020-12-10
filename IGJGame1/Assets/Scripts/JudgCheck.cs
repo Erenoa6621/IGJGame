@@ -19,29 +19,32 @@ public class JudgCheck : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision other)  
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Enemy")
         {
             if (type == 0)
             {
-                Cont(KeyCode.RightArrow, other);
-               
+                Cont(KeyCode.RightArrow);
+                Destroy(other.gameObject);
+
             }
             else if (type == 1)
             {
-                Cont(KeyCode.LeftArrow, other);
-           
+                Cont(KeyCode.LeftArrow);
+                Destroy(other.gameObject);
+
             }
             else if (type == 2)
             {
-                Cont(KeyCode.DownArrow, other);
-    
+                Cont(KeyCode.DownArrow);
+
+                Destroy(other.gameObject);
             }
             else if (type == 3)
             {
-                Cont(KeyCode.UpArrow, other);
-              
+                Cont(KeyCode.UpArrow);
+                Destroy(other.gameObject);
             }
             //ScoreText.GetComponent<ScoreManager>().Score += BeterScore;
             
@@ -49,12 +52,12 @@ public class JudgCheck : MonoBehaviour
         Debug.Log("あたった");
     }
 
-    private void Cont(KeyCode AA, Collision other)
+    private void Cont(KeyCode AA)
     {
-        if (Input.GetKeyDown(AA))
+        if (Input.GetKey(AA))
         {
             ScoreText.GetComponent<ScoreManager>().Score += BeterScore; 
-            Destroy(other.gameObject);
+            
         }
     }
 }
