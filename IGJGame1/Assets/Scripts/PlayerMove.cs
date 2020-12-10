@@ -29,6 +29,7 @@ public class PlayerMove : MonoBehaviour
             //transformをVector3に
             targetVectors = targets.ConvertAll (new Converter<Transform[], Vector3[]> (ToVector3));
             PathSetUp ();
+
         }
     }
 
@@ -53,13 +54,13 @@ public class PlayerMove : MonoBehaviour
             }
 
             //レーン切り替え
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 activeRailNum = 2;
                 RailChange(activeRailNum);
                 time = 0.0f;
             }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 activeRailNum = 0;
                 RailChange(activeRailNum);
