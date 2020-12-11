@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -56,6 +57,7 @@ public class PlayerMove : MonoBehaviour
                 trackPosition = trackPosition;
                 PlayerPrefs.SetInt("SCORE", score);
                 PlayerPrefs.Save();
+                SceneManager.LoadScene("END");
 
             }
             else 
@@ -65,27 +67,27 @@ public class PlayerMove : MonoBehaviour
             }
             
             //レーン切り替え
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            if (Input.GetKeyDown(KeyCode.A))
             {
                 activeRailNum = 2;
                 RailChange(activeRailNum);
                 PlayerAni.SetTrigger("Atack");
                 time = 0.0f;
             }
-            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            else if (Input.GetKeyDown(KeyCode.D))
             {
                 activeRailNum = 0;
                 RailChange(activeRailNum);
                 PlayerAni.SetTrigger("Atack");
                 time = 0.0f;
             }
-            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            else if (Input.GetKeyDown(KeyCode.S))
             {
                 activeRailNum = 1;
                 RailChange(activeRailNum);
                 PlayerAni.SetTrigger("Atack");
             }
-            else if (Input.GetKeyDown(KeyCode.UpArrow))
+            else if (Input.GetKeyDown(KeyCode.W))
             {
                 activeRailNum = 3;
                 RailChange(activeRailNum);

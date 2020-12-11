@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using UnityEditorInternal;
+//using UnityEditorInternal;
 
 public class Rail : MonoBehaviour
 {
 
-	// 閉じる
+	/*// 閉じる
 	public bool isClose = false;
 
 	// レール点のリスト
@@ -129,5 +129,5 @@ public class Rail : MonoBehaviour
 			rail.railPoints.Remove(railPoint);
 			DestroyImmediate(railPoint);
 		}
-	}
+	}*/
 }
